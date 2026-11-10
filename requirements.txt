@@ -1,0 +1,10 @@
+# Data Manipulation & Formats
+pandas>=2.0.0
+pyarrow>=14.0.0
+scikit-learn>=1.5.0
+matplotlib>=3.8.0
+Cartopy
+
+# Interactive Analysis Environment
+jupyter>=1.0.0
+ipykernel>=6.0.0

@@ -1,0 +1,12 @@
+## Ignore all Parquet files 
+*.parquet
+
+### But do not ignore the THOR_Vietnam_Bombing_Operations.parquet file
+!THOR_Vietnam_Bombing_Operations.parquet
+
+## Ignore PBI-temp files
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+
+## Ignore the Python virtual environment
+.venv/
