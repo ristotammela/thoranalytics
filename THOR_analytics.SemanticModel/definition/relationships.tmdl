@@ -1,0 +1,5 @@
+relationship db3edaf2-080e-44af-abd2-71a8704372bd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: THOR_ANALYSIS.missiondate
+	toColumn: LocalDateTable_7ff8ed56-dbeb-4397-b313-195df7e193a4.Date
+

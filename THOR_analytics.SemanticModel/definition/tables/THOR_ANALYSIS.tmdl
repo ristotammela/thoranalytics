@@ -1,0 +1,216 @@
+table THOR_ANALYSIS
+	lineageTag: 2d024c40-b9db-475f-9b1b-846caed1a87a
+
+	column THOR_DATA_VIET_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: dc8fbfc5-3d1b-43c7-9dcd-1229d0402eb4
+		summarizeBy: count
+		sourceColumn: THOR_DATA_VIET_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TGTLONDDD_DDD_WGS84
+		dataType: double
+		lineageTag: bd0bf49f-eb49-45a1-bc22-d2572328bdfc
+		summarizeBy: sum
+		sourceColumn: TGTLONDDD_DDD_WGS84
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TGTLATDD_DDD_WGS84
+		dataType: double
+		lineageTag: ae36afd8-8478-4eb4-9f12-4bb6bc1c1d9a
+		summarizeBy: sum
+		sourceColumn: TGTLATDD_DDD_WGS84
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OPERATIONSUPPORTED
+		dataType: string
+		lineageTag: 50ee7535-61ac-400e-8087-6a4b5b9aefaa
+		summarizeBy: none
+		sourceColumn: OPERATIONSUPPORTED
+
+		annotation SummarizationSetBy = Automatic
+
+	column missiondate
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1eadc110-5928-485b-b0c8-e37306828523
+		summarizeBy: none
+		sourceColumn: missiondate
+
+		variation Variation
+			isDefault
+			relationship: db3edaf2-080e-44af-abd2-71a8704372bd
+			defaultHierarchy: LocalDateTable_7ff8ed56-dbeb-4397-b313-195df7e193a4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column operationhochiminhtrail
+		dataType: string
+		lineageTag: e898d142-6132-4f96-b672-f53b2a010aca
+		summarizeBy: none
+		sourceColumn: operationhochiminhtrail
+
+		annotation SummarizationSetBy = Automatic
+
+	column FLTHOURS
+		dataType: int64
+		formatString: 0
+		lineageTag: 3e20ad2a-a5df-4f53-98cc-ccddbd3168b3
+		summarizeBy: sum
+		sourceColumn: FLTHOURS
+
+		annotation SummarizationSetBy = Automatic
+
+	column WEAPONTYPE
+		dataType: string
+		lineageTag: 3242ea2d-594f-443d-a0fa-73524c7dd565
+		summarizeBy: none
+		sourceColumn: WEAPONTYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column AIRCRAFT_ROOT
+		dataType: string
+		lineageTag: 0cd6066c-8879-4342-b8ad-857506a44930
+		summarizeBy: none
+		sourceColumn: AIRCRAFT_ROOT
+
+		annotation SummarizationSetBy = Automatic
+
+	column TGTCOUNTRY
+		dataType: string
+		lineageTag: f1653f7e-eb9d-4da2-8c47-543625836594
+		summarizeBy: none
+		sourceColumn: TGTCOUNTRY
+
+		annotation SummarizationSetBy = Automatic
+
+	column RESULTSBDA
+		dataType: string
+		lineageTag: 7f2ed38a-8449-458e-b230-99aac792f817
+		summarizeBy: none
+		sourceColumn: RESULTSBDA
+
+		annotation SummarizationSetBy = Automatic
+
+	column WEAPONTYPECLASS
+		dataType: string
+		lineageTag: 9a80c913-5a0a-4221-a671-2edcf94eed41
+		summarizeBy: none
+		sourceColumn: WEAPONTYPECLASS
+
+		annotation SummarizationSetBy = Automatic
+
+	column RESULTSBDATYPE
+		dataType: string
+		lineageTag: bc98811c-1338-4fa3-8ca5-7816c6ffb230
+		summarizeBy: none
+		sourceColumn: RESULTSBDATYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column MISSIONID
+		dataType: string
+		lineageTag: bbcacb20-1518-4b23-bc3c-94c650e6a7a0
+		summarizeBy: none
+		sourceColumn: MISSIONID
+
+		annotation SummarizationSetBy = Automatic
+
+	column MFUNC_DESC
+		dataType: string
+		lineageTag: 7c57770f-d355-48ee-954b-b72f06602778
+		summarizeBy: none
+		sourceColumn: MFUNC_DESC
+
+		annotation SummarizationSetBy = Automatic
+
+	column MFUNC_DESC_CLASS
+		dataType: string
+		lineageTag: fa487927-9174-4dbe-920d-802369407796
+		summarizeBy: none
+		sourceColumn: MFUNC_DESC_CLASS
+
+		annotation SummarizationSetBy = Automatic
+
+	column PERIODOFDAY
+		dataType: string
+		lineageTag: a9419ccc-a74a-4bce-bdcd-522256b1413f
+		summarizeBy: none
+		sourceColumn: PERIODOFDAY
+
+		annotation SummarizationSetBy = Automatic
+
+	column SOURCERECORD
+		dataType: string
+		lineageTag: 3082d375-71f3-48c7-9ed1-5791b130a96b
+		summarizeBy: none
+		sourceColumn: SOURCERECORD
+
+		annotation SummarizationSetBy = Automatic
+
+	column TGTTYPE
+		dataType: string
+		lineageTag: 64a61229-5658-4c49-90d3-1372cd70d2c8
+		summarizeBy: none
+		sourceColumn: TGTTYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column RELEASEALTITUDE
+		dataType: double
+		lineageTag: d5361382-0f41-48bd-8a0b-9557c4efbe88
+		summarizeBy: sum
+		sourceColumn: RELEASEALTITUDE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NUMWEAPONSDELIVERED
+		dataType: int64
+		formatString: 0
+		lineageTag: 4dc6e096-cf8d-4c24-bb74-5f92b61d55e6
+		summarizeBy: sum
+		sourceColumn: NUMWEAPONSDELIVERED
+
+		annotation SummarizationSetBy = Automatic
+
+	column TGTCLOUDCOVER
+		dataType: string
+		lineageTag: 51a45b5b-3d8c-400f-9806-9430029b6c52
+		summarizeBy: none
+		sourceColumn: TGTCLOUDCOVER
+
+		annotation SummarizationSetBy = Automatic
+
+	column TGTCONTROL
+		dataType: string
+		lineageTag: 4eecb31e-aaf6-465e-be99-5e235c8a8cdf
+		summarizeBy: none
+		sourceColumn: TGTCONTROL
+
+		annotation SummarizationSetBy = Automatic
+
+	partition THOR_ANALYSIS = m
+		mode: import
+		source =
+				let
+				    Source = Parquet.Document(File.Contents(PathParquet), [Compression=null, LegacyColumnNameEncoding=false, MaxDepth=null])
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

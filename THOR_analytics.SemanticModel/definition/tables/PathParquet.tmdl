@@ -1,0 +1,23 @@
+table PathParquet
+	lineageTag: 1f447e3a-5cd7-4b11-b54a-21b365f9acf4
+
+	column PathParquet
+		dataType: string
+		lineageTag: aa12817f-27a5-41e7-8cce-1f9c39194363
+		summarizeBy: none
+		sourceColumn: PathParquet
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PathParquet = m
+		mode: import
+		source =
+				let
+				    Source = "C:\git\thoranalytics\THOR_Analysis.parquet"
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

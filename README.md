@@ -48,3 +48,12 @@ duckdb --version
 ```powershell
 Get-Content .\sql\thor_etl.sql | duckdb
 ```
+
+## Updating the Power BI Parquet path
+
+If you move or clone the repository to a different location, update the Power BI
+`PathParquet` parameter to point to this repository's `THOR_Analysis.parquet`:
+
+```powershell
+python .\scripts\update_pbi_parquet_path.py
+```

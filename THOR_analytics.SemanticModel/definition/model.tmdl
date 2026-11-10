@@ -1,0 +1,23 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-FI
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["THOR_ANALYSIS","PathParquet"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.146.705.0 (25.08)+b71502aff0a01340c88f384884ef42771068f115
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table THOR_ANALYSIS
+ref table DateTableTemplate_78ec3982-dcb2-4c80-9606-36a4a3886a8b
+ref table LocalDateTable_7ff8ed56-dbeb-4397-b313-195df7e193a4
+ref table PathParquet
+
+ref cultureInfo en-US
+

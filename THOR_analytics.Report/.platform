@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "THOR_analytics"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "be1843a0-cf18-49c9-a6ea-2006f169df3b"
+  }
+}
