@@ -202,6 +202,14 @@ table THOR_ANALYSIS
 
 		annotation SummarizationSetBy = Automatic
 
+	column targetcategory
+		dataType: string
+		lineageTag: 623bae79-dd5b-4f09-a92b-e847635a1bca
+		summarizeBy: none
+		sourceColumn: targetcategory
+
+		annotation SummarizationSetBy = Automatic
+
 	partition THOR_ANALYSIS = m
 		mode: import
 		source =

@@ -7,19 +7,21 @@ Cleansing THOR Vietnam dataset, feature extraction and data analytics.
 Data manipulation is carried out by DuckDB.
 Data analytics are carried out by Python.
 Data visualizations in PowerBI.
-Excel can be used for random sprasheet modeling.
+Excel can be used for random spreadsheet modeling.
 
 
 ```mermaid
 flowchart LR
+    original("Original csv <br/> generates parquet using makeparquet.py")
     raw["THOR_Vietnam_Bombing_Operations.parquet"]
     glossary["THOR_Vietnam_Weapons_Glossary.csv"]
     etl["DuckDB ETL<br/> using thor_etl.sql"]
     output["Wrangled data in <br/>THOR_Analysis.parquet"]
     powerbi["Visualization in <br/>Power BI"]
-    model["Models in <br/>Python"]
+    model["Models built in <br/>Python <br/> using Jupyter"]
     spreadsheet["Spreadsheet in <br/> Excel"]
 
+    original --> raw
     raw --> etl
     glossary --> etl
     etl --> output
@@ -85,4 +87,6 @@ python .\scripts\update_pbi_parquet_path.py
 
 ## Running Jupyter notebooks
 
-Jupyter notebooks contain data analytics.
+Jupyter notebooks contain data analytics.  You can run them on your favorite
+editor.  Project prefers VS Code extension.
+
