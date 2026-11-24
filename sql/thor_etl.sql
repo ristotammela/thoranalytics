@@ -27,7 +27,8 @@ SELECT
         'UNDEFINED' AS AIRCRAFT_APPLICATION,
         FALSE AS IMINT,
         FALSE AS SIGINT,
-        GEOCODE_COUNTRY_CODE
+        GEOCODE_COUNTRY_CODE,
+        missiondate - MIN(missiondate) OVER () AS missiondate_day
 FROM read_parquet(getvariable('input_path'));
 
 ## Map weapon types to weapon classes
@@ -249,7 +250,8 @@ COPY (
         IMINT,
         SIGINT,
         operationother,
-        GEOCODE_COUNTRY_CODE
+        GEOCODE_COUNTRY_CODE,
+        missiondate_day
     FROM temp_stage_table
 ) 
 TO 'THOR_Analysis.parquet'

@@ -254,6 +254,15 @@ table THOR_ANALYSIS
 
 		annotation SummarizationSetBy = Automatic
 
+	column missiondate_day
+		dataType: int64
+		formatString: 0
+		lineageTag: dbc71909-3215-4e54-b2f6-83067970855e
+		summarizeBy: none
+		sourceColumn: missiondate_day
+
+		annotation SummarizationSetBy = User
+
 	partition THOR_ANALYSIS = m
 		mode: import
 		source =
