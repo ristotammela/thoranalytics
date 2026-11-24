@@ -14,3 +14,7 @@
 # Ignore other Python temp-files
 
 *.pyc
+
+# Generated  model binaries and predictions
+/predictions/
+*.joblib

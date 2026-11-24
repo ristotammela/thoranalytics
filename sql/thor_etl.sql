@@ -28,7 +28,8 @@ SELECT
         FALSE AS IMINT,
         FALSE AS SIGINT,
         GEOCODE_COUNTRY_CODE,
-        missiondate - MIN(missiondate) OVER () AS missiondate_day
+        missiondate - MIN(missiondate) OVER () AS missiondate_day,
+        NULL as predicted_ishochiminhtrailoperation
 FROM read_parquet(getvariable('input_path'));
 
 ## Map weapon types to weapon classes
