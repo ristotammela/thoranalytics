@@ -14,7 +14,10 @@ Excel can be used for random spreadsheet modeling.
 flowchart LR
     original("Original csv <br/> generates parquet using makeparquet.py")
     raw["THOR_Vietnam_Bombing_Operations.parquet"]
-    glossary["THOR_Vietnam_Weapons_Glossary.csv"]
+    geocoder["reverse_geocode.py"]
+    geocoded["THOR_Vietnam_Bombing_Operations_geocoded.parquet"]
+    weapons["THOR_Vietnam_Weapons_Glossary.csv"]
+    aircraft["THOR_Vietnam_Aircraft_Glossary.csv"]
     etl["DuckDB ETL<br/> using thor_etl.sql"]
     output["Wrangled data in <br/>THOR_Analysis.parquet"]
     powerbi["Visualization in <br/>Power BI"]
@@ -22,8 +25,11 @@ flowchart LR
     spreadsheet["Spreadsheet in <br/> Excel"]
 
     original --> raw
-    raw --> etl
-    glossary --> etl
+    raw --> geocoder
+    geocoder --> geocoded
+    geocoded --> etl
+    weapons --> etl
+    aircraft --> etl
     etl --> output
     output --> powerbi
     output --> model
