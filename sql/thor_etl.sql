@@ -12,12 +12,22 @@ SELECT
             WHEN OPERATIONSUPPORTED ILIKE '%STEEL TIGER%' THEN 'STEEL TIGER'
             WHEN OPERATIONSUPPORTED ILIKE '%TIGER HOUND%' THEN 'TIGER HOUND'
             WHEN OPERATIONSUPPORTED ILIKE '%IGLOO WHITE%' THEN 'IGLOO WHITE'
+            WHEN OPERATIONSUPPORTED ILIKE '%YANKEE TEIM%' THEN 'YANKEE TEAM'
             ELSE NULL
         END AS operationhochiminhtrail,
+        CASE 
+            WHEN OPERATIONSUPPORTED ILIKE '%IN COUNTRY%'   THEN 'IN COUNTRY'
+            WHEN OPERATIONSUPPORTED ILIKE '%ROLLING THUN%' THEN 'ROLLING THUNDER'
+            ELSE NULL
+        END AS operationother,
         try_strptime(MSNDATE, ['%Y-%m-%d', '%Y%m%d'])::DATE AS missiondate,
         'UNDEFINED' AS WEAPON_CLASS,
         'UNDEFINED' AS RESULTSBDATYPE,
-        'UNDEFINED' AS targetcategory
+        'UNDEFINED' AS targetcategory,
+        'UNDEFINED' AS AIRCRAFT_APPLICATION,
+        FALSE AS IMINT,
+        FALSE AS SIGINT,
+
 FROM read_parquet(getvariable('input_path'));
 
 ## Map weapon types to weapon classes
@@ -30,10 +40,26 @@ FROM read_csv_auto(
     encoding = 'latin-1'
 );
 
+CREATE TEMP TABLE map_aircraft AS
+SELECT *
+FROM read_csv_auto(
+    'THOR_Vietnam_Aircraft_Glossary.csv',
+    header = true,
+    encoding = 'latin-1'
+);
+
+
 UPDATE temp_stage_table
 SET WEAPON_CLASS = map_weapons.WEAPON_CLASS
 FROM map_weapons
 WHERE temp_stage_table.WEAPONTYPE = map_weapons.WEAPONTYPE;
+
+
+UPDATE temp_stage_table
+SET AIRCRAFT_APPLICATION = map_aircraft.AIRCRAFT_APPLICATION
+FROM map_aircraft
+WHERE temp_stage_table.VALID_AIRCRAFT_ROOT = map_aircraft.VALIDATED_ROOT;
+
 
 UPDATE temp_stage_table
 SET RESULTSBDATYPE = 'RNO'
@@ -173,6 +199,15 @@ UPDATE temp_stage_table
 SET targetcategory = classify_tgttype(TGTTYPE);
 
 
+UPDATE temp_stage_table
+SET IMINT = TRUE
+WHERE AIRCRAFT_ROOT in ('RA3', 'RA5', 'RB57','RF101','RF4','RF8');
+    
+
+UPDATE temp_stage_table
+SET SIGINT = TRUE
+WHERE AIRCRAFT_ROOT in ('RF66','RC47');
+
 
 COPY (
     SELECT 
@@ -199,7 +234,11 @@ COPY (
         NUMWEAPONSDELIVERED,
         TGTCLOUDCOVER,
         TGTCONTROL,
-        targetcategory
+        targetcategory,
+        AIRCRAFT_APPLICATION,
+        IMINT,
+        SIGINT,
+        operationother
     FROM temp_stage_table
 ) 
 TO 'THOR_Analysis.parquet'
