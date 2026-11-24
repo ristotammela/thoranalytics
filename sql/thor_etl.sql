@@ -1,6 +1,6 @@
 SET preserve_insertion_order = false;
 
-SET variable input_path  = 'THOR_Vietnam_Bombing_Operations.parquet';
+SET variable input_path  = 'THOR_Vietnam_Bombing_Operations_geocoded.parquet';
 
 ## Extract base values from the input Parquet file
 
@@ -27,7 +27,7 @@ SELECT
         'UNDEFINED' AS AIRCRAFT_APPLICATION,
         FALSE AS IMINT,
         FALSE AS SIGINT,
-
+        GEOCODE_COUNTRY_CODE
 FROM read_parquet(getvariable('input_path'));
 
 ## Map weapon types to weapon classes
@@ -82,11 +82,21 @@ WHERE   THOR_DATA_VIET_ID IS NULL
         OR TGTLATDD_DDD_WGS84 > 22.5
         ;
 
+
+# remove coordinates which are not in Vietnam, Cambodia or Laos
+
+DELETE FROM temp_stage_table
+WHERE GEOCODE_COUNTRY_CODE NOT IN ('VN', 'KH', 'LA');
+
+
 # remove SEADAB B-52 records
 
 DELETE FROM
 temp_stage_table
 WHERE SOURCERECORD = 'SEADAB' AND AIRCRAFT_ROOT = 'B52';
+
+
+
 
 -- 1. Recreate the classification macro with all aircraft grouped under Air Defense & Radar
 CREATE OR REPLACE MACRO classify_tgttype(val) AS (
@@ -238,7 +248,8 @@ COPY (
         AIRCRAFT_APPLICATION,
         IMINT,
         SIGINT,
-        operationother
+        operationother,
+        GEOCODE_COUNTRY_CODE
     FROM temp_stage_table
 ) 
 TO 'THOR_Analysis.parquet'

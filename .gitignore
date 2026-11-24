@@ -10,3 +10,7 @@
 
 ## Ignore the Python virtual environment
 .venv/
+
+# Ignore other Python temp-files
+
+*.pyc

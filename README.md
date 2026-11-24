@@ -85,6 +85,25 @@ If you move or clone the repository to a different location, update the Power BI
 python .\scripts\update_pbi_parquet_path.py
 ```
 
+## Reverse geocoding target coordinates
+
+```powershell
+python .\scripts\reverse_geocode.py
+```
+
+This reads `THOR_Vietnam_Bombing_Operations.parquet` and writes a separate
+`THOR_Vietnam_Bombing_Operations_geocoded.parquet`, preserving all original
+rows and columns. Use `--input` and `--output` to choose different paths; an
+existing output is replaced, but the input cannot be used as the output.
+
+The script uses `TGTLATDD_DDD_WGS84` and `TGTLONDDD_DDD_WGS84` (the longitude
+column's actual spelling in the source). It adds `GEOCODE_NAME`,
+`GEOCODE_ADMIN1`, `GEOCODE_ADMIN2`, and `GEOCODE_COUNTRY_CODE` from
+`reverse_geocoder`. These describe the nearest populated place, not necessarily
+the administrative area containing the target, and are not historical
+boundaries. Missing or out-of-range coordinates produce null geocoding fields.
+The library uses its bundled geographic data and does not make online requests.
+
 ## Running Jupyter notebooks
 
 Jupyter notebooks contain data analytics.  You can run them on your favorite

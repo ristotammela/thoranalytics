@@ -40,7 +40,7 @@ table THOR_ANALYSIS
 
 	column missiondate
 		dataType: dateTime
-		formatString: Long Date
+		formatString: yyyy-mm-dd
 		lineageTag: 1eadc110-5928-485b-b0c8-e37306828523
 		summarizeBy: none
 		sourceColumn: missiondate
@@ -53,6 +53,8 @@ table THOR_ANALYSIS
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isCustom":true}
 
 	column operationhochiminhtrail
 		dataType: string
@@ -207,6 +209,48 @@ table THOR_ANALYSIS
 		lineageTag: 623bae79-dd5b-4f09-a92b-e847635a1bca
 		summarizeBy: none
 		sourceColumn: targetcategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column AIRCRAFT_APPLICATION
+		dataType: string
+		lineageTag: 87ee4848-7b98-4ef3-8df5-92068c2b4cea
+		summarizeBy: none
+		sourceColumn: AIRCRAFT_APPLICATION
+
+		annotation SummarizationSetBy = Automatic
+
+	column IMINT
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b812bdca-fd0e-4d19-b98b-f195efd57e1a
+		summarizeBy: none
+		sourceColumn: IMINT
+
+		annotation SummarizationSetBy = Automatic
+
+	column SIGINT
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8ed88c38-e7a6-471d-826c-38de714489e7
+		summarizeBy: none
+		sourceColumn: SIGINT
+
+		annotation SummarizationSetBy = Automatic
+
+	column operationother
+		dataType: string
+		lineageTag: caabfae7-7e0f-4feb-830e-c55528c88af3
+		summarizeBy: none
+		sourceColumn: operationother
+
+		annotation SummarizationSetBy = Automatic
+
+	column GEOCODE_COUNTRY_CODE
+		dataType: string
+		lineageTag: 0270bd91-2fb2-42a0-962b-c8ab43b358a6
+		summarizeBy: none
+		sourceColumn: GEOCODE_COUNTRY_CODE
 
 		annotation SummarizationSetBy = Automatic
 

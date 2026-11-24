@@ -1,6 +1,7 @@
 # Data Manipulation & Formats
 pandas>=2.0.0
 pyarrow>=14.0.0
+reverse_geocoder>=1.5.1
 scikit-learn>=1.5.0
 matplotlib>=3.8.0
 Cartopy
