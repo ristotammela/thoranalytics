@@ -18,6 +18,7 @@ SELECT
         CASE 
             WHEN OPERATIONSUPPORTED ILIKE '%IN COUNTRY%'   THEN 'IN COUNTRY'
             WHEN OPERATIONSUPPORTED ILIKE '%ROLLING THUN%' THEN 'ROLLING THUNDER'
+            WHEN OPERATIONSUPPORTED ILIKE '%BLUE TREE%' THEN 'ROLLING THUNDER'
             ELSE NULL
         END AS operationother,
         try_strptime(MSNDATE, ['%Y-%m-%d', '%Y%m%d'])::DATE AS missiondate,
